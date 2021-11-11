@@ -1,0 +1,20 @@
+name: Feature_scML
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - numpy=1.20.1
+  - pandas=1.2.4
+  - scikit-learn=0.24.2
+  - statsmodels=0.12.2
+  - scipy
+  - matplotlib
+  - seaborn
+  - pip
+  - pip:
+    - minepy==1.2.3
+    - mlxtend==0.18.0
+    - statsmodels==0.12.2
+    - skrebate==0.62
+    - shap==0.39.0
