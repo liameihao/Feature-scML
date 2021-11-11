@@ -5,7 +5,7 @@ Feature Selection
 =================
 
 
-Feature-scML fs func
+Feature_scML fs func
 --------------
 
 fs module is feature selection function, including F-score algorithm (**fscore**), 
@@ -18,7 +18,7 @@ These methods are referred in the :ref:`index <Reference>`.
 
 .. code-block:: bash
 
-    $Feature-scML fs -h
+    $Feature_scML fs -h
     usage: fs
 
     optional arguments:
@@ -63,7 +63,7 @@ Example
 .. code-block:: bash
 
     # default start, end, and step 
-    $Feature-scML fs -i example.csv -m cv2 
+    $Feature_scML fs -i example.csv -m cv2 
 
 
 The result will generate two dataframe. As follow:
