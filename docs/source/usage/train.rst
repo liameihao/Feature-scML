@@ -4,7 +4,7 @@
 Machine learning 
 ================
 
-fs_cls cls func
+Feature-scML cls func
 ---------------
 cls module is Machine Learning classification function, including Support Vector Machine, Random Forest, Gaussian Naive Bayes, and Logical Regression.
 Input data and test data is required CSV format. We integrated the hyperparameter optimization function in the training process. 
@@ -12,7 +12,7 @@ Test data is not required. IF test data is not input, the train data wil be spli
 
 .. code-block:: bash
     
-    $fs_cls cls -h
+    $Feature-scML cls -h
     usage: cls
 
     optional arguments:
@@ -62,7 +62,7 @@ Example
 
 .. code-block:: bash
     
-    $fs_cls cls -i example.csv -c svm
+    $Feature-scML cls -i example.csv -c svm
     Feature selection: cv2
     cv2 is running
     ....................
