@@ -1,5 +1,5 @@
 from setuptools import setup
-from fs_cls.__init__ import __version__
+from Feature_scML.__init__ import __version__
 
 
 setup(name="Feature_scML",
@@ -24,7 +24,7 @@ setup(name="Feature_scML",
         ],
       entry_points={
         'console_scripts': [
-          'Feature_Vis=Feature_Vis.__main__:main'
+          'Feature_scML=Feature_scML.__main__:main'
           ]
         },
       python_requires=">=3.7",
