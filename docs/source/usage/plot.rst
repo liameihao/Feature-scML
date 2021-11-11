@@ -36,8 +36,8 @@ FW module shows the feature selection method to plot the contribution of each fe
 .. code-block:: bash
     
     # If you do not have a dataframe of feature importances,
-    # Please run $Feature-scML fs -i example.csv -m fscore
-    $Feature-scML plot FW -i example_fscore.csv
+    # Please run $Feature_scML fs -i example.csv -m fscore
+    $Feature_scML plot FW -i example_fscore.csv
     # get example_fscore_FeatureWeight.png in the current directory.
 
     
@@ -71,8 +71,8 @@ to plot the correlation of every two features.
 .. code-block:: bash
     
     # If you do not have a dataframe of feature importances,
-    # Please run $Feature-scML fs -i example.csv -m fscore
-    $Feature-scML plot cor -i example_fscore_data.csv -m pearson -n 10
+    # Please run $Feature_scML fs -i example.csv -m fscore
+    $Feature_scML plot cor -i example_fscore_data.csv -m pearson -n 10
     # get pearson_correlation_example_fscore_data_10.png in the current directory.
 
 
@@ -103,8 +103,8 @@ where n is the total number of features.
 .. code-block:: bash
     
     # If you do not have a dataframe of incremental feature classification performance,
-    # Please run $Feature-scML automl -i example.csv -c svm -m fscore --njobs 20
-    $Feature-scML plot IFS -i 10-100_fscore_SVM_accuracy.csv
+    # Please run $Feature_scML automl -i example.csv -c svm -m fscore --njobs 20
+    $Feature_scML plot IFS -i 10-100_fscore_SVM_accuracy.csv
     # get 10-100_fscore_SVM_accuracy_IFS.png in the current directory.
 
 
@@ -139,8 +139,8 @@ for a specific sample.
 
 .. code-block:: bash
     
-    # Feature-scML automl -i ../example.csv -c svm -m fscore --njobs 20 --getmodel True
-    $Feature-scML plot waterfall -i example_fscore_data.csv --model_path example_20_svm.joblib -s 0 -n 20
+    # Feature_scML automl -i ../example.csv -c svm -m fscore --njobs 20 --getmodel True
+    $Feature_scML plot waterfall -i example_fscore_data.csv --model_path example_20_svm.joblib -s 0 -n 20
 
 
 .. figure:: ../images/example_fscore_data_simple_feature_contribute.png
@@ -176,9 +176,9 @@ how the top features in a dataset impact the model’s output.
 
 .. code-block:: bash
     
-    # Feature-scML automl -i ../example.csv -c svm -m fscore --njobs 20 --getmodel True
+    # Feature_scML automl -i ../example.csv -c svm -m fscore --njobs 20 --getmodel True
     # Evaluate the summary shap value of all samples with a strategy of 1.
-    $Feature-scML plot beeswarm -i example_fscore_data.csv --model_path waterfall/example_20_svm.joblib  -n 20 -s 1
+    $Feature_scML plot beeswarm -i example_fscore_data.csv --model_path waterfall/example_20_svm.joblib  -n 20 -s 1
 
 
 .. figure:: ../images/example_fscore_data_simple_feature_summary.png
@@ -208,7 +208,7 @@ The PCA plot shows the influence of different feature clustering on sample clust
 
 .. code-block:: bash
     
-    $Feature-scML plot PCA -i example_fscore_data.csv -n 100
+    $Feature_scML plot PCA -i example_fscore_data.csv -n 100
 
 
 .. figure:: ../images/example_fscore_data_100_PCA.png
@@ -242,8 +242,8 @@ by computing the confusion matrix with each row corresponding to the true class
 
 .. code-block:: bash
 
-    # $Feature-scML automl -i example.csv -c svm -m fscore 
-    $Feature-scML plot CM -i example_fscore_data.csv -n 100 --model_path example_100_svm.joblib
+    # $Feature_scML automl -i example.csv -c svm -m fscore 
+    $Feature_scML plot CM -i example_fscore_data.csv -n 100 --model_path example_100_svm.joblib
 
 
 .. figure:: ../images/confusion_matrix_example_fscore_data_100.png

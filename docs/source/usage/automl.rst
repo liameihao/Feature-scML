@@ -4,7 +4,7 @@
 Auto Machine Learning
 =====================
 
-fs_cls automl func
+Feature_scML automl func
 ------------------
 automl is Auto Machine Learning, including fs module and cls module.
 Input data and test data is required **CSV format**. We integrated the hyperparameter optimization function in the training process. 
@@ -17,7 +17,7 @@ and the result table of incremental feature training.
 
 .. code-block:: bash
 
-    $fs_cls automl -h
+    $Feature_scML automl -h
     usage: automl
 
     optional arguments:
@@ -81,7 +81,7 @@ Example
 .. code-block:: bash
 
     # default start, end, and step 
-    $fs_cls automl -i example.csv -c svm -m cv2 
+    $Feature_scML automl -i example.csv -c svm -m cv2 
     The identity link function does not respect the domain of the Gamma family.
     feature number: 10
     train accuracy: 0.7923
@@ -121,7 +121,7 @@ feature number, train_accuracy, test_accuracy and parameters (optimal hyperparam
     # If output is None, model file will saved in current directory
     # example_lr.joblib is saved in current directory.
     # start = 20, step = 20, end = 60
-    $fs_cls automl -i example.csv -c svm -m cv2 --start 20 --step 20 --end 60 --njobs 20 --getmodel True
+    $Feature_scML automl -i example.csv -c svm -m cv2 --start 20 --step 20 --end 60 --njobs 20 --getmodel True
     $ls
     20-60_cv2_SVM_accuracy.csv  example.csv  example_40_svm.joblib  example_cv2.csv
     example_20_svm.joblib       example_60_svm.joblib  example_cv2_data.csv
