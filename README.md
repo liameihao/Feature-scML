@@ -28,6 +28,20 @@ python setup.py install
 
 
 
+tips: minepy may report errors, please install it separately
+
+Solution
+
+```bash
+conda create -n env_name python=3.7
+pip install minepy==1.2.3
+# pip install statsmodels==0.12.2
+# pip install skrebate==0.62
+# pip install shap==0.39.0
+```
+
+
+
 ### Doc
 
 https://Feature-scML.readthedocs.io/en/latest/index.html
