@@ -1,4 +1,6 @@
 # Feature-scML
+[![Documentation Status](https://readthedocs.org/projects/feature-scml/badge/?version=latest)](https://feature-scml.readthedocs.io/en/latest/?badge=latest)
+
 ### Install
 
 It is recommended to install [conda](https://conda.io/en/latest/miniconda.html) to install the environment to avoid additional errors.
