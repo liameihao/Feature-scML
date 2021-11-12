@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Feature-Vis'
+project = 'Feature-scML'
 copyright = '2021, Pengfei Liang'
 author = 'Pengfei Liang'
 
