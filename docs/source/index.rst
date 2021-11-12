@@ -19,12 +19,19 @@ Install
 
 .. code-block:: bash
 
-   pip install Feature_scML
-   or
-   git clone https://github.com/liameihao/Feature-scML.git
-   python setup.py install
-   # 
+   # create environment
+   conda create -n env -f environment.yml
+   # or
    conda env create -f environment.yml
+   # activate environment
+   conda activate Feature_scML
+
+   #Install Feature-scML
+   pip install git+https://github.com/liameihao/Feature-scML.git@main -U
+   # or
+   git clone https://github.com/liameihao/Feature-scML.git
+   cd Feature-scML
+   python setup.py install
 
 
 =============
