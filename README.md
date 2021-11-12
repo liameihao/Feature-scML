@@ -9,6 +9,9 @@ It is recommended to install [conda](https://conda.io/en/latest/miniconda.html) 
 conda create -n env -f environment.yml
 # or
 conda env create -f environment.yml
+
+# activate environment
+conda activate Feature_scML
  ```
 
 **Install Feature-scML**
