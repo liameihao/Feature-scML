@@ -17,7 +17,7 @@ conda activate Feature_scML
 **Install Feature-scML**
 
 ```bash
-pip install git+@https://github.com/liameihao/Feature-scML.git@main -U
+pip install git+https://github.com/liameihao/Feature-scML.git@main -U
 # or
 git clone https://github.com/liameihao/Feature-scML.git
 cd Feature-scML
