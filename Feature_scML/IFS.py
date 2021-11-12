@@ -41,5 +41,5 @@ def overall_predict(args):
                                                                   filename=filename_part)
         feature_number = X_train_.shape[1]
         accuracy_data.loc[i] = feature_number, train_accuracy, test_accuracy, best_params_
-    accuracy_data.to_csv("{0}-{1}_{2}_SVM_accuracy.csv".format(args.start, args.end - 1, args.method), index=False)
+    accuracy_data.to_csv("{0}-{1}_{2}_{3}_accuracy.csv".format(args.start, args.end - 1, args.method, args.classifier), index=False)
 
