@@ -139,11 +139,7 @@ for a specific sample.
 
 .. code-block:: bash
     
-<<<<<<< HEAD
-    # Feature_scML automl -i ../example.csv -c svm -m fscore --njobs 20 --getmodel True
-=======
     # Feature_scML automl -i example.csv -c svm -m fscore --njobs 20 --getmodel True
->>>>>>> 8bd37314557f03bbefbaf089a687d1810733c30f
     $Feature_scML plot waterfall -i example_fscore_data.csv --model_path example_20_svm.joblib -s 0 -n 20
 
 
@@ -180,15 +176,9 @@ how the top features in a dataset impact the model’s output.
 
 .. code-block:: bash
     
-<<<<<<< HEAD
-    # Feature_scML automl -i ../example.csv -c svm -m fscore --njobs 20 --getmodel True
-    # Evaluate the summary shap value of all samples with a strategy of 1.
-    $Feature_scML plot beeswarm -i example_fscore_data.csv --model_path waterfall/example_20_svm.joblib  -n 20 -s 1
-=======
     # Feature_scML automl -i example.csv -c svm -m fscore --njobs 20 --getmodel True
     # Evaluate the summary shap value of all samples with a strategy of 1.
     $Feature_scML plot beeswarm -i example_fscore_data.csv --model_path example_20_svm.joblib  -n 20 -s 1
->>>>>>> 8bd37314557f03bbefbaf089a687d1810733c30f
 
 
 .. figure:: ../images/example_fscore_data_simple_feature_summary.png

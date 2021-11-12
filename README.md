@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-# Feature-scML
-### Welcome
- ```bash
-conda create -n env -f environment.yml
-# or
-conda env create -f environment.yml
-# install packages
-python setup.py install
-```
-
-### Doc
-https://Feature-scML.readthedocs.io/en/latest/index.html
-=======
 # Feature-scML
 [![Documentation Status](https://readthedocs.org/projects/feature-scml/badge/?version=latest)](https://feature-scml.readthedocs.io/en/latest/?badge=latest)
 
@@ -59,4 +45,3 @@ pip install minepy==1.2.3
 ### Doc
 
 https://Feature-scML.readthedocs.io/en/latest/index.html
->>>>>>> 8bd37314557f03bbefbaf089a687d1810733c30f

@@ -1,10 +1,7 @@
 name: Feature_scML
 channels:
   - conda-forge
-<<<<<<< HEAD
-=======
   - bioconda
->>>>>>> 8bd37314557f03bbefbaf089a687d1810733c30f
   - defaults
 dependencies:
   - python=3.7
@@ -15,15 +12,9 @@ dependencies:
   - scipy
   - matplotlib
   - seaborn
-<<<<<<< HEAD
-  - pip
-  - pip:
-    - minepy==1.2.3
-=======
   - minepy=1.2.3
   - pip
   - pip:
->>>>>>> 8bd37314557f03bbefbaf089a687d1810733c30f
     - mlxtend==0.18.0
     - statsmodels==0.12.2
     - skrebate==0.62
