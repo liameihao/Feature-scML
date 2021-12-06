@@ -95,10 +95,8 @@ def feature_selection_rfc(data, label):
 
 def feature_selection_ano(data, label):
     X = data.iloc[:, 1:]
-    _, pv = f_classif(X, label)
-    pv = -np.log10(pv)
-    pv /= pv.max()
-    return pv  
+    score, _ = f_classif(X, label)
+    return score
 
 
 def mic(data, label):
@@ -125,7 +123,7 @@ def feature_selection_linear_svm(data, label):
 def feature_selection_Turf(data, label, njobs):
     X = data.iloc[:, 1:]
     X_s = scale_data(X)
-    head = [i for i in range(X_s.shape[1])]
+    head = list(X.columns)
     fs = TuRF(core_algorithm="ReliefF",
               n_features_to_select=2,
               pct=0.5,
