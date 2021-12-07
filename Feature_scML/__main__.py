@@ -26,7 +26,7 @@ def fs(args, subparsers):
         '-m', '--method', 
         required=True,
         choices=['fscore', 'pca', 'cv2', 'rfc',
-                 'ano', 'mic', 'turf', 'linearsvm'],
+                 'mic', 'turf', 'linearsvm'],
         help='Feature selection method'
     )
     parsers.add_argument(
