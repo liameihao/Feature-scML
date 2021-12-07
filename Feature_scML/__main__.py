@@ -144,9 +144,15 @@ def automl(args, subparsers):
     parsers.add_argument(
         '--method', '-m',
         choices=['fscore', 'pca', 'cv2', 'rfc',
-                 'ano', 'mic', 'turf', 'linearsvm'],
-        default='fscore',
+                 'mic', 'turf', 'linearsvm'],
+        required=True,
         help='Select a feature selection method'
+    )
+    parsers.add_argument(
+        '--disable_fs_method',
+        default=False,
+        type=bool,
+        help='Use IFS directly without feature ranking (default: False)'
     )
     parsers.add_argument(
         "--start",
@@ -175,7 +181,7 @@ def automl(args, subparsers):
     parsers.add_argument(
         '--classifier', '-c',
         choices=['svm', 'rf', 'gnb', 'lr'],
-        default="svm",
+        required=True,
         help=textwrap.dedent('''\
             Select a machine learning method: 
             lr (Logical Regression)

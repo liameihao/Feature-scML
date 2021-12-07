@@ -8,7 +8,10 @@ from .models import model_train
 def overall_predict(args):
     filename = os.path.split(args.input_train)[1].split(".")[0]
     data = pd.read_csv(args.input_train, header=0)
-    train_data = fs_output(data, args.method, filename, args.njobs)
+    if not args.disable_fs_method:
+        train_data = fs_output(data, args.method, filename, args.njobs)
+    else:
+        train_data = data
     X_train = train_data.iloc[:, 1:].values
     y_train = train_data['Label'].values
     if args.output:
