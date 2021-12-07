@@ -82,9 +82,7 @@ def feature_selection_rfc(data, label):
     forest = RandomForestClassifier()
     forest.fit(X_s, label)
     importances = forest.feature_importances_
-    std = np.std([tree.feature_importances_ for tree in forest.estimators_],
-                 axis=0)
-    return std
+    return importances
 
 
 def mic(data, label):
