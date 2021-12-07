@@ -6,10 +6,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import LinearSVC
 from skrebate import TuRF
-from mlxtend.feature_selection import SequentialFeatureSelector as SFS
-from sklearn.feature_selection import f_classif
 from minepy import MINE
-from .fscore import fscore_main
 from scipy import stats
 
 
@@ -20,12 +17,9 @@ def fs_output(data, method_name, filename, njobs=1):
     elif method_name == "pca":
         feature_score = cal_pca(data)
     elif method_name == "fscore":
-        data_train = fscore_main(data, filename)
-        return data_train
+        feature_score = fscore(data)
     elif method_name == "rfc":
         feature_score = feature_selection_rfc(data, label)
-    elif method_name == 'ano':
-        feature_score = feature_selection_ano(data, label)
     elif method_name == "mic":
         feature_score = mic(data, label)
     elif method_name == "turf":
@@ -93,12 +87,6 @@ def feature_selection_rfc(data, label):
     return std
 
 
-def feature_selection_ano(data, label):
-    X = data.iloc[:, 1:]
-    score, _ = f_classif(X, label)
-    return score
-
-
 def mic(data, label):
     X = data.iloc[:, 1:]
     X_s = scale_data(X)
@@ -152,3 +140,18 @@ def cor_matrix(data, method):
             out[i,j] = out[j,i] = person_cor
     out[data_shape-1, data_shape-1] = 1
     return out
+
+
+# https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/fselect/fselect.py
+def fscore(data):
+    X = data.iloc[:,1:].values
+    y = data.iloc[:,0].values
+    X_all_mean = np.mean(X,axis=0)
+    f_bottom = np.repeat(1e-12, X.shape[1])
+    f_top = np.zeros(X.shape[1])
+    for i in np.unique(y):
+        X_ = X[y==i]
+        X_mean = np.mean(X_, axis=0)
+        f_top += X_.shape[0]*np.square(X_mean-X_all_mean)
+        f_bottom += np.sum(np.square(X_),axis=0)-(np.sum(X_,axis=0)**2)/X_.shape[0]
+    return f_top/f_bottom
