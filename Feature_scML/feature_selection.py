@@ -40,8 +40,8 @@ def fs_output(data, method_name, filename, njobs=1):
     return data_train
 
 
-def scale_data(X):
-    min_max_scaler = MinMaxScaler(feature_range=(-1, 1))
+def scale_data(X, min_range=-1, max_range=1):
+    min_max_scaler = MinMaxScaler(feature_range=(min_range, max_range))
     scaler = min_max_scaler.fit(X)
     return scaler.transform(X)
 
@@ -82,6 +82,7 @@ def feature_selection_rfc(data, label):
     forest = RandomForestClassifier()
     forest.fit(X_s, label)
     importances = forest.feature_importances_
+    importances /= importances.max()
     return importances
 
 

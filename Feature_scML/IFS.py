@@ -23,6 +23,7 @@ def overall_predict(args):
         X_test = test_data.iloc[:, 1:].values
         y_test = test_data['Label'].values
     else:
+        print("Data is split into training set and test set according to 8:2")
         X_train, X_test, y_train, y_test = train_test_split(
             X_train, y_train, test_size=0.2, random_state=42)
     

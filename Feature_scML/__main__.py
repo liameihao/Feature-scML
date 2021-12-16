@@ -103,15 +103,14 @@ def cls(args, subparsers):
     args = parsers.parse_args(args)
     filename = os.path.split(args.input_train)[1].split(".")[0]
     data = pd.read_csv(args.input_train, header=0)
-    if not args.input_test:
-        X_train = data.iloc[:, 1:].values
-        y_train = data['Label'].values
+    X_train = data.iloc[:, 1:].values
+    y_train = data['Label'].values
+    if not args.input_test: 
         # Split arrays into random train and test subsets
+        print("Data is split into training set and test set according to 8:2")
         X_train, X_test, y_train, y_test = train_test_split(
             X_train, y_train, test_size=0.2, random_state=42)
     else:
-        X_train = data.iloc[:, 1:].values
-        y_train = data['Label'].values
         test = pd.read_csv(args.input_test, header=0)
         X_test = test.iloc[:, 1:].values
         y_test = test['Label'].values
@@ -263,12 +262,25 @@ def main():
         help='Feature beeswarm based on shap values of specific category')
     subparsers_lplot_beeswarm.set_defaults(func=fs_args)
     #
+    # SHAP
+    subparsers_lplot_SHAP = subparsers_lplot_s.add_parser(
+        'SHAP', 
+        add_help=False,
+        help='Feature bar plot based on shap value')
+    subparsers_lplot_SHAP.set_defaults(func=SHAP_args)
+    #
     # PCA
     subparsers_lplot_PCA = subparsers_lplot_s.add_parser(
         'PCA', 
         add_help=False,
         help='Principal Component Analysis (PCA)')
     subparsers_lplot_PCA.set_defaults(func=PCA_args)
+    # TSNE
+    subparsers_lplot_TSNE = subparsers_lplot_s.add_parser(
+        'TSNE', 
+        add_help=False,
+        help='T-distributed Stochastic Neighbor Embedding(TSNE)')
+    subparsers_lplot_TSNE.set_defaults(func=TSNE_args)
     #
     # Confusion matrix (CM)
     subparsers_lplot_CM = subparsers_lplot_s.add_parser(

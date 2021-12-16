@@ -7,8 +7,10 @@ import shap
 from joblib import load
 from .feature_selection import scale_data, cor_matrix
 from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix
 import seaborn as sns
+from sklearn.manifold import TSNE
 
 
 # args
@@ -125,6 +127,56 @@ def fc_args(args, subparsers):
                        args.sample_id, 
                        args.feature_number)
     print("Done")
+    
+    
+def SHAP_args(args, subparsers):
+    parsers = subparsers.add_parser('SHAP', prog='SHAP', usage='%(prog)s ')
+    parsers.add_argument(
+        "-i", '--input',
+        required=True,
+        help='Input data'
+    )
+    parsers.add_argument(
+        '--format', '-f',
+        choices=['png',"pdf"],
+        default="png",
+        help='Picture format(default=png)'
+    )
+    parsers.add_argument(
+        '--model_path',
+        required=True,
+        help='Model Path'
+    )
+    parsers.add_argument(
+        '--classifier', '-c',
+        choices=['svm','rf','lr'],
+        required=True,
+        help='classifier type'
+    )
+    parsers.add_argument(
+        '-n', '--feature_number', 
+        required=True,
+        type=int,
+        help='The number of features is consistent with the model'
+    )
+    parsers.add_argument(
+        '-o', '--output', 
+        default=None,
+        help='Output directory'
+    )
+    args = parsers.parse_args(args)
+    filename = os.path.split(args.input)[1].split(".")[0]
+    data = pd.read_csv(args.input, header=0)
+    if args.output:
+        os.chdir(args.output)
+    print("running...")
+    print("."*20)
+    shap_sum(data, filename, 
+             args.feature_number,
+             args.model_path,
+             args.format,
+             args.classifier)
+    print("Done")
 
 # Feature beeswarm based on shap values of specific category
 def fs_args(args, subparsers):
@@ -215,6 +267,42 @@ def PCA_args(args, subparsers):
     print("running...")
     print("."*20)
     PCA_plot(data,args.feature_number,2,args.format,filename)
+    print("Done")
+
+
+# T-SNE
+def TSNE_args(args, subparsers):
+    parsers = subparsers.add_parser('TSNE', prog='TSNE', usage='%(prog)s ')
+    parsers.add_argument(
+        "-i", '--input',
+        required=True,
+        help='Input data'
+    )
+    parsers.add_argument(
+        '--format', '-f',
+        choices=['png',"pdf"],
+        default="png",
+        help='Picture format(default=png)'
+    )
+    parsers.add_argument(
+        "-n", "--feature_number",
+        required=True,
+        type=int,
+        help='Feature number'
+    )
+    parsers.add_argument(
+        '-o', '--output', 
+        default=None,
+        help='Output directory'
+    )
+    args = parsers.parse_args(args)
+    filename = os.path.split(args.input)[1].split(".")[0]
+    data = pd.read_csv(args.input, header=0)
+    if args.output:
+        os.chdir(args.output)
+    print("running...")
+    print("."*20)
+    TSNE_plot(data,args.feature_number,2,args.format,filename)
     print("Done")
 
 #  Confusion matrix
@@ -354,6 +442,12 @@ def feature_contribute(data, filename, model_path, image_format, sample_id, feat
     y = data.iloc[:,0].values
     # svm shap
     f = lambda x: model.predict_proba(x)[:,y[sample_id]]
+    # lr shap
+    
+    # rf shap
+    
+    # gnb
+    
     explainer = shap.Explainer(f,X)
     shap_values = explainer(X[sample_id].reshape(1,-1))
     # plot
@@ -383,9 +477,36 @@ def feature_summary(data, filename, feature_number, model_path, image_format, sa
                 bbox_inches = 'tight')
     plt.close()
 
+def shap_expain_choose(X, model, classifier_type):
+    if classifier_type == "lr":
+        explainer = shap.LinearExplainer(model, X)
+        return explainer.shap_values(X)
+    elif classifier_type == "svm":
+        explainer = shap.KernelExplainer(model.predict_proba, X)
+        return explainer.shap_values(X)
+    elif classifier_type == "rf":
+        explainer = shap.TreeExplainer(model, X)
+        return explainer.shap_values(X, check_additivity=False)
+
+   
+def shap_sum(data, filename, feature_number, model_path, image_format, classifier_type):
+    model = load(model_path).best_estimator_
+    X = scale_data(data.iloc[:,1:feature_number+1].values)
+    # 
+    shap_values = shap_expain_choose(X, model, classifier_type)
+    # plot
+    shap.summary_plot(shap_values, X, plot_type="bar",
+                      feature_names=data.columns[1:].values,
+                      color=cm.Paired, show=False)
+    plt.savefig("{}_SHAP_feature_summary.{}".format(filename, image_format),
+                format=image_format,
+                bbox_inches = 'tight')
+    plt.close()
+
 
 def PCA_plot(data, feature_number, lw, image_format, filename):
-    X = scale_data(data.iloc[:,1:feature_number+1].values)
+    scaler = StandardScaler()
+    X = scaler.fit_transform(data.iloc[:,1:feature_number+1].values)
     y = data.iloc[:,0].values
     pca = PCA(n_components=2)
     X_r = pca.fit_transform(X)
@@ -427,12 +548,30 @@ def CM_plot(data, filename, feature_number, model_path, image_format):
                 format=image_format, 
                 bbox_inches = 'tight')
     print("Done")
-    
+
+
+def TSNE_plot(data, feature_number, lw, image_format, filename): 
+    scaler = StandardScaler()
+    X = scaler.fit_transform(data.iloc[:,1:feature_number+1].values)
+    y = data.iloc[:,0].values
+    pca = PCA(n_components=15)
+    tsne = TSNE(n_components=2, init='pca')
+    X_pca = pca.fit_transform(X)
+    X_embedded = tsne.fit_transform(X_pca)
+    for i in np.unique(y):
+        plt.scatter(X_embedded[y == i, 0], X_embedded[y == i, 1], 
+                    alpha=.8, lw=0, label=int(i))
+        plt.legend(loc='best', shadow=False, scatterpoints=1)
+        plt.title('T-SNE')
+    plt.savefig("{}_{}_T-SNE.{}".format(filename, feature_number, image_format),
+                format=image_format,
+                bbox_inches = 'tight')
+    plt.close()
 
     
 __all__ = ['IFS_args', 'FW_args', 'fc_args', 
-           'fs_args', 'PCA_args', 'CM_args', 
-           'COR_args']
+           'fs_args', 'PCA_args',"TSNE_args",
+           'CM_args', 'COR_args',"SHAP_args"]
 
 
 
