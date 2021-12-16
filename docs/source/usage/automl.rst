@@ -46,34 +46,34 @@ and the result table of incremental feature training.
 Command
 -------
 
-+--------------------+---------------------------+----------------------------------------------+
-| Parameters         | Optional                  | Descripton                                   |
-+====================+===========================+==============================================+
-| ---input_train,-i  | filename path             | input Train data filename path (CSV format)  |
-+--------------------+---------------------------+----------------------------------------------+
-| ---input_test,-t   | filename path             | input Test data filename path (CSV format)   |
-+--------------------+---------------------------+----------------------------------------------+
-|| ---method, -m     || fscore, pca, cv2,        || The details of the methods are in the       |
-||                   || rfc, ano, mic,           || fs module                                   |
-||                   || turf, linearsvm          ||                                             |
-+--------------------+---------------------------+----------------------------------------------+
-|| ---classifier, -c || lr,svm,rf,gnb            || - lr (Logical Regression)                   |
-||                   ||                          || - svm (Support Vector Machine)              |
-||                   ||                          || - rf (Random Forest)                        |
-||                   ||                          || - gnb (Gaussian Naive Bayes)                |
-+--------------------+---------------------------+----------------------------------------------+
-| ---start           | int, default=10           | Minimal number of features                   |
-+--------------------+---------------------------+----------------------------------------------+
-| ---end             | int, default=all features | Maximum number of features                   |
-+--------------------+---------------------------+----------------------------------------------+
-| ---step            | int, default=10           | Step size of incremental feature training    |
-+--------------------+---------------------------+----------------------------------------------+
-| ---output, -o      | output directory          | output directory (default:Current directory) |
-+--------------------+---------------------------+----------------------------------------------+
-| ---njobs           | int, default=1            | The number of jobs to run in parallel        |
-+--------------------+---------------------------+----------------------------------------------+
-| ---getmodel        | True or False             | If True, model file will be saved            |
-+--------------------+---------------------------+----------------------------------------------+
++-------------------+---------------------------+----------------------------------------------+
+| Parameters        | Optional                  | Descripton                                   |
++===================+===========================+==============================================+
+| ---input_train,-i | filename path             | input Train data filename path (CSV format)  |
++-------------------+---------------------------+----------------------------------------------+
+| ---input_test,-t  | filename path             | input Test data filename path (CSV format)   |
++-------------------+---------------------------+----------------------------------------------+
+| ---method, -m     | fscore, pca, cv2,         | The details of the methods are in the        |
+|                   | rfc, mic,                 | fs module                                    |
+|                   | turf, linearsvm           |                                              |
++-------------------+---------------------------+----------------------------------------------+
+| ---classifier, -c | lr,svm,rf,gnb             | - lr (Logical Regression)                    |
+|                   |                           | - svm (Support Vector Machine)               |
+|                   |                           | - rf (Random Forest)                         |
+|                   |                           | - gnb (Gaussian Naive Bayes)                 |
++-------------------+---------------------------+----------------------------------------------+
+| ---start          | int, default=10           | Minimal number of features                   |
++-------------------+---------------------------+----------------------------------------------+
+| ---end            | int, default=all features | Maximum number of features                   |
++-------------------+---------------------------+----------------------------------------------+
+| ---step           | int, default=10           | Step size of incremental feature training    |
++-------------------+---------------------------+----------------------------------------------+
+| ---output, -o     | output directory          | output directory (default:Current directory) |
++-------------------+---------------------------+----------------------------------------------+
+| ---njobs          | int, default=1            | The number of jobs to run in parallel        |
++-------------------+---------------------------+----------------------------------------------+
+| ---getmodel       | True or False             | If True, model file will be saved            |
++-------------------+---------------------------+----------------------------------------------+
 
 Example
 -------

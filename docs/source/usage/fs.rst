@@ -38,24 +38,23 @@ These methods are referred in the :ref:`index <Reference>`.
 Command
 -------
 
-+---------------+--------------------+----------------------------------------------+
-| Parameters    | optional           | Descripton                                   |
-+===============+====================+==============================================+
-|| --method, -m || fscore, pca, cv2, || - fscore (F-score algorithm)                |
-||              || rfc, ano, mic,    || - pca (principal component analysis)        |
-||              || turf, linearsvm   || - cv2 (squared coefficient of variation)    |
-||              ||                   || - rfc (random forest classifier)            |
-||              ||                   || - ano (ANOVA Pvalue)                        |
-||              ||                   || - mic (the maximal information coefficient) |
-||              ||                   || - turf (ReliefF)                            |
-||              ||                   || - linearsvm (linear support vector machine) |
-+---------------+--------------------+----------------------------------------------+
-| --input,-i    | filename path      | input filename path (CSV format)             |
-+---------------+--------------------+----------------------------------------------+
-| --output, -o  | output directory   | output directory (default:Current directory) |
-+---------------+--------------------+----------------------------------------------+
-| --njobs       | int, default=1     | The number of jobs to run in parallel        |
-+---------------+--------------------+----------------------------------------------+
++--------------+-------------------+----------------------------------------------+
+| Parameters   | optional          | Descripton                                   |
++==============+===================+==============================================+
+| --method, -m | fscore, pca, cv2, | - fscore (F-score algorithm)                 |
+|              | rfc, mic,         | - pca (principal component analysis)         |
+|              | turf, linearsvm   | - cv2 (squared coefficient of variation)     |
+|              |                   | - rfc (random forest classifier)             |
+|              |                   | - mic (the maximal information coefficient)  |
+|              |                   | - turf (ReliefF)                             |
+|              |                   | - linearsvm (linear support vector machine)  |
++--------------+-------------------+----------------------------------------------+
+| --input,-i   | filename path     | input filename path (CSV format)             |
++--------------+-------------------+----------------------------------------------+
+| --output, -o | output directory  | output directory (default:Current directory) |
++--------------+-------------------+----------------------------------------------+
+| --njobs      | int, default=1    | The number of jobs to run in parallel        |
++--------------+-------------------+----------------------------------------------+
 
 Example
 -------

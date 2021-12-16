@@ -9,6 +9,7 @@ Plot module have three submodules.
 * **FW** (Feature weights)
 * **cor** (Feature Correlation (cor) analysis)
 * **IFS** (Incremental feature selection curves)
+* **SHAP** (shap values summary)
 * **waterfall** (Feature waterfall based on shap values)
 * **beeswarm** (Feature beeswarm based on shap values of specific category)
 * **PCA** (Principal component analysis)
@@ -112,6 +113,40 @@ where n is the total number of features.
     :align: center
     
     10-100_fscore_SVM_accuracy_IFS.png
+
+
+SHAP
+----
+SHAP shows each feature of shap values for all categories.
+
++-----------------------+---------------+-------------------------------------------------------------+
+| Parameters            | Optional      | Descripton                                                  |
++-----------------------+---------------+-------------------------------------------------------------+
+| -i, ---input          | filename path | dataframe path (CSV format)                                 |
++-----------------------+---------------+-------------------------------------------------------------+
+| ---format             | png, pdf      | Picture format                                              |
++-----------------------+---------------+-------------------------------------------------------------+
+| ---model_path         | filename path | Model file path (joblib)                                    |
++-----------------------+---------------+-------------------------------------------------------------+
+| --classifier          | svm,rf,lr     | classifier name                                             |
++-----------------------+---------------+-------------------------------------------------------------+
+| -n, ---feature_number | int           | Consistent with the number of features trained by the model |
++-----------------------+---------------+-------------------------------------------------------------+
+| -o, ---output         | directory     | Output directory (default:Current directory)                |
++-----------------------+---------------+-------------------------------------------------------------+
+
+**IFS example**
+
+.. code-block:: bash
+    
+    # If you do not have a dataframe of incremental feature classification performance,
+    # Please run $Feature_scML automl -i example.csv -c rf -m fscore --njobs 20
+    $Feature_scML plot SHAP -i example.csv -c rf -n 100 --model_path example_rf.joblib
+
+.. figure:: ../images/example_rf_100_SHAP_feature_summary.png
+    :align: center
+    
+    example_rf_100_SHAP_feature_summary.png
 
 
 waterfall
