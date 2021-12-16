@@ -25,7 +25,7 @@ These methods are referred in the :ref:`index <Reference>`.
     -h, --help            show this help message and exit
     -i INPUT, --input INPUT
                             Input train data (CSV)
-    -m {fscore,pca,cv2,rfc,ano,mic,turf,linearsvm}, --method {fscore,pca,cv2,rfc,ano,mic,turf,linearsvm}
+    -m {fscore,pca,cv2,rfc,ano,mic,turf,linearsvm}, --method {fscore,pca,cv2,rfc,mic,turf,linearsvm}
                             Feature selection method
     -o OUTPUT, --output OUTPUT
                             Output directory

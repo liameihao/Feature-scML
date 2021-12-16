@@ -26,7 +26,7 @@ and the result table of incremental feature training.
                             Input train data (CSV)
     -t INPUT_TEST, --input_test INPUT_TEST
                             Input test data (CSV)
-    --method {fscore,pca,cv2,rfc,ano,mic,turf,linearsvm}, -m {fscore,pca,cv2,rfc,ano,mic,turf,linearsvm}
+    --method {fscore,pca,cv2,rfc,ano,mic,turf,linearsvm}, -m {fscore,pca,cv2,rfc,mic,turf,linearsvm}
                             Select a feature selection method
     --start START         Feature Number start (default=10)
     --end END             Feature Number end (default=all features)
