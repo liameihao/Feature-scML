@@ -135,7 +135,7 @@ SHAP shows each feature of shap values for all categories.
 | -o, ---output         | directory     | Output directory (default:Current directory)                |
 +-----------------------+---------------+-------------------------------------------------------------+
 
-**IFS example**
+**SHAP example**
 
 .. code-block:: bash
     
@@ -251,6 +251,34 @@ The PCA plot shows the influence of different feature clustering on sample clust
     
     example_fscore_data_100_PCA.png
 
+
+T-distributed Stochastic Neighbor Embedding (T-SNE)
+----------------------------------
+The T-SNE plot shows the influence of different feature clustering on sample clustering.
+
++-----------------------+---------------+----------------------------------------------+
+| Parameters            | Optional      | Descripton                                   |
++-----------------------+---------------+----------------------------------------------+
+| -i, ---input          | filename path | dataframe path (CSV format)                  |
++-----------------------+---------------+----------------------------------------------+
+| ---format             | png, pdf      | Picture format                               |
++-----------------------+---------------+----------------------------------------------+
+| -n, ---feature_number | int           | feature number                               |
++-----------------------+---------------+----------------------------------------------+
+| -o, ---output         | directory     | Output directory (default:Current directory) |
++-----------------------+---------------+----------------------------------------------+
+
+**T-SNE example**
+
+.. code-block:: bash
+    
+    $Feature_scML plot TSNE -i example_data.csv -n 100
+
+
+.. figure:: ../images/example_data_100_T-SNE.png
+    :align: center
+    
+    example_data_100_T-SNE.png
 
 
 Confusion matrix (CM)
