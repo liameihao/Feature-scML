@@ -47,4 +47,4 @@ pip install minepy==1.2.3
 https://Feature-scML.readthedocs.io/en/latest/index.html
 
 # Citation
-Liang P, Wang H, Liang Y, et al. Feature-scML: An Open-source Python Package for the Feature Importance Visualization of Single-Cell Omics with Machine Learning[J]. Current Bioinformatics, 2022, 17(7): 578-585.
+**Liang P**, Wang H, Liang Y, et al. Feature-scML: An Open-source Python Package for the Feature Importance Visualization of Single-Cell Omics with Machine Learning[J]. Current Bioinformatics, 2022, 17(7): 578-585 (https://doi.org/10.2174/1574893617666220608123804).
