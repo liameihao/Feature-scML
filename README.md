@@ -1,11 +1,11 @@
 # Feature-scML
 [![Documentation Status](https://readthedocs.org/projects/feature-scml/badge/?version=latest)](https://feature-scml.readthedocs.io/en/latest/?badge=latest) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### Install
+## Install
 
 It is recommended to install [conda](https://conda.io/en/latest/miniconda.html) to install the environment to avoid additional errors.
 
-**Install conda**
+### Install conda
 
  ```bash
 conda create -n env -f environment.yml
@@ -16,7 +16,7 @@ conda env create -f environment.yml
 conda activate Feature_scML
  ```
 
-**Install Feature-scML**
+### Install Feature-scML
 
 ```bash
 pip install git+https://github.com/liameihao/Feature-scML.git@main -U
@@ -26,11 +26,10 @@ cd Feature-scML
 python setup.py install
 ```
 
+### tips
+minepy may report errors, please install it separately
 
-
-tips: minepy may report errors, please install it separately
-
-Solution
+**Solution**
 
 ```bash
 conda create -n env_name python=3.7
@@ -42,9 +41,9 @@ pip install minepy==1.2.3
 
 
 
-### Doc
+## Doc
 
 https://Feature-scML.readthedocs.io/en/latest/index.html
 
-# Citation
+## Citation
 **Liang P**, Wang H, Liang Y, et al. Feature-scML: An Open-source Python Package for the Feature Importance Visualization of Single-Cell Omics with Machine Learning[J]. Current Bioinformatics, 2022, 17(7): 578-585 (https://doi.org/10.2174/1574893617666220608123804).
